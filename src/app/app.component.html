@@ -1,0 +1,94 @@
+<!--<div class="container">
+  <form [formGroup]="myForm">
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="user name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email</label>
+          <input type="text" class="form-control" id="name" formControlName="email" placeholder="user email">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">City</label>
+          <input type="text" class="form-control" id="name" formControlName="city" placeholder="user city">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <button type="button" class="btn btn-primary" (click)="addData">Add</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+-->
+
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="username" class="form-label">User Name</label>
+          <input type="text" required [class.is-invalid]="name?.invalid && name?.touched"  class="form-control" id="username" formControlName="name" placeholder="user name">
+          <div *ngIf="name?.invalid && name?.touched">
+            <small class="text-danger" *ngIf="name?.errors?.['required']">Name is required</small>
+            <small class="text-danger" *ngIf="name?.errors?.['minlength']">Name must have 3 letters</small>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="useremail" class="form-label">User email</label>
+          <input type="text" required [class.is-invalid]="email?.invalid && email?.touched" 
+           class="form-control" id="useremail" formControlName="email" placeholder="user email">
+          <div *ngIf="email?.invalid && email?.touched">
+            <small class="text-danger" *ngIf="email?.errors?.['required']">Email is required</small>
+            <small class="text-danger" *ngIf="email?.errors?.['email']">Email must be in proper form</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-check">
+          <input class="form-check-input" formControlName="notification" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+           Send Notification
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="text" required [class.is-invalid]="phoneNo?.invalid && phoneNo?.touched"
+            class="form-control" id="phoneNo" formControlName="phoneNo" placeholder="user phone">
+          <div *ngIf="phoneNo?.invalid && phoneNo?.touched">
+            <small class="text-danger" *ngIf="phoneNo?.errors?.['required']">Phone No is required</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <input type="submit" [disabled]="userForm.invalid" class="btn btn-primary" value="Add"/>
+      </div>
+    </div>
+    </form>
+    </div>
